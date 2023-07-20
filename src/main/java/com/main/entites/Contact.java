@@ -7,10 +7,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "CONTRACT")
-public class Contract {
+public class Contact {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cid;
@@ -19,6 +21,8 @@ public class Contract {
 	private String work;
 	private String email;
 	private String phone;
+	@NotNull
+	@NotEmpty
 	private String image;
 	@Column(length = 50000)
 	private String descirption;
@@ -32,7 +36,7 @@ public class Contract {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Contract() {
+	public Contact() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -84,6 +88,7 @@ public class Contract {
 	public void setDescirption(String descirption) {
 		this.descirption = descirption;
 	}
+	
 
 	
 }

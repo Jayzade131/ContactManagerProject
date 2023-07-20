@@ -26,15 +26,21 @@ public class MainController {
 	
 	@GetMapping("/home")
 	public String home(Model m) {
-		m.addAttribute("title", "Home - Smart Contract Manager");
+		m.addAttribute("title", "Home - Smart Contact Manager");
 		return "home";
 	}
 	
 	@GetMapping("/signup")
 	public String signUp(Model m) {
-		m.addAttribute("title", "Register - Smart Contract Manager");
+		m.addAttribute("title", "Register - Smart Contact Manager");
 		m.addAttribute("user",new User());
 		return "signup";
+	}
+	@GetMapping("/about")
+	public String aboutpage(Model m)
+	{
+		m.addAttribute("title", "About - Smart Contact Manager");
+		return "about";
 	}
 	
 	@PostMapping("/do_register")
@@ -52,7 +58,7 @@ public class MainController {
 				m.addAttribute("user", user);
 				return "signup";
 			}
-			user.setRole("ROLE_USER");
+			user.setRole("User");
 			user.setEnabled(true);
 			user.setImageUrl("default.jpg");
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -73,5 +79,12 @@ public class MainController {
 		
 	}
 	
+	@GetMapping("/signin")
+	public String login(Model m)
+	{
+		m.addAttribute("title", "Login - Smart Contact Manager");
+		return "login";
+				
+	}
 
 }

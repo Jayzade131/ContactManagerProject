@@ -36,7 +36,11 @@ public class MyConfig extends WebSecurityConfiguration{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
      
-        http.authorizeHttpRequests().requestMatchers("/admin/**").hasAnyAuthority("ADMIN").requestMatchers("/user/**").hasAuthority("User").requestMatchers("/**").permitAll().and().formLogin().and().csrf().disable(); 
+        http.authorizeHttpRequests().requestMatchers("/admin/**").hasAnyAuthority("ADMIN").requestMatchers("/user/**").hasAuthority("User").requestMatchers("/**").permitAll().and().formLogin()
+        .loginPage("/signin")
+        .loginProcessingUrl("/do_login")
+        .defaultSuccessUrl("/user/input")
+        .and().csrf().disable(); 
 
  
         return http.build();

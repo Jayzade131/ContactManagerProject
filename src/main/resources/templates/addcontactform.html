@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" th:replace="base2::Layout(~{::section})">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<section>
+		<div class="card mr-2 ml-2">
+			<div class="card-body">
+				<h1 class="text-center">Add Contact</h1>
+				<div th:if="${session.message}">
+				<div th:classappend="${'alert-'+session.message.type}" class="alert  text-center" role="alert">
+					<span th:text="${session.message.content}"></span>
+				</div>
+				<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+				</div>
+				<div class="conatiner-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<form action="#" enctype="multipart/form-data" th:object="${contact}"
+								th:action="@{/user/do_addcontact}" method="post" class="mt-2">
+								<!--first name-->
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-plus"></i>
+										</div>
+									</div>
+									<input type="text" id="firstName" required name="name" placeholder="Enter First Name Here"
+										class="form-control">
+								</div>
+								<!--second Name-->
+								<div class="input-group mt-4">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="far fa-user"></i>
+										</div>
+									</div>
+									<input type="text" id="secondName" required name="secondName"
+										placeholder="Enter Nick Name Here" class="form-control">
+								</div>
+								<!--work-->
+								<div class="input-group mt-4">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fas fa-briefcase"></i>
+										</div>
+									</div>
+									<input type="text" id="work" required name="work" placeholder="Enter Work Here"
+										class="form-control">
+								</div>
+								<!--email-->
+								<div class="input-group mt-4">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fas fa-envelope"></i>
+										</div>
+									</div>
+									<input type="email" id="email" name="email" required placeholder="Enter Email Here"
+										class="form-control">
+								</div>
+								<!--phone number-->
+								<div class="input-group mt-4">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fas fa-phone"></i>
+										</div>
+									</div>
+									<input type="text" id="phone" required name="phone" placeholder="Enter Contact Number Here"
+										class="form-control">
+								</div>
+								<!--image-->
+								<div class="input-group mt-4">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fas fa-image"></i>
+										</div>
+									</div>
+									<input type="file" id="image" name="image" class="form-control">
+								</div>
+								<!--description-->
+
+								<div class="input-group mt-4">
+									<div class="input-group-prepend">
+
+									</div>
+									<textarea id="default-editor" rows="4" name="descirption"
+										placeholder="Enter Contact Description Here" class="form-control"></textarea>
+								</div>
+								<div class="conatiner mt-4">
+									<button type="submit" class="btn btn-outline-danger">Save Contact</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.tiny.cloud/1/inon0vp6e1e0zyagz9seotww9w3ior9uzfaducgh0sxh6jau/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+  selector: 'textarea#default-editor'
+});
+		</script>
+	</section>
+</body>
+
+</html>

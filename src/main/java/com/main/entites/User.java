@@ -25,7 +25,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int uid;
 	@NotBlank(message = "Name can't be blank")
-	@Size(min=3,max = 12,message = "name must be between 3 - 20 character")
+	@Size(min=3,max = 50,message = "name must be between 3 - 50 character")
 	private String name;
 	@Column(unique = true)
 	@Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", message = "Invalid email !!")
@@ -38,7 +38,7 @@ public class User {
 	private String about;
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private List<Contract> contracts=new ArrayList<>();
+	private List<Contact> contracts=new ArrayList<>();
 	
 	public int getUid() {
 		return uid;
@@ -46,10 +46,10 @@ public class User {
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
-	public List<Contract> getContracts() {
+	public List<Contact> getContracts() {
 		return contracts;
 	}
-	public void setContracts(List<Contract> contracts) {
+	public void setContracts(List<Contact> contracts) {
 		this.contracts = contracts;
 	}
 	public User() {
