@@ -88,6 +88,12 @@ public class Contact {
 	public void setDescirption(String descirption) {
 		this.descirption = descirption;
 	}
+	@Override
+	public boolean equals(Object obj)
+	{
+		return this.cid==((Contact)obj).getCid();
+		
+	}
 	
 
 	

@@ -37,7 +37,7 @@ public class User {
 	@Column(length = 500)
 	private String about;
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Contact> contracts=new ArrayList<>();
 	
 	public int getUid() {

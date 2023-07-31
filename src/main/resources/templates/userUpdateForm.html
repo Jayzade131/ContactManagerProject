@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" th:replace="base2::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+	<div class="card mr-2 ml-2">
+			<div class="card-body">
+				<h1 class="text-center">Update User</h1>
+				
+				<div class="conatiner-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<form action="#" enctype="multipart/form-data" th:object="${user}"
+								th:action="@{/user/update-user}" method="post" class="mt-2">
+								<input type="hidden" name="uid" th:value="${user.uid}">
+								<!--name-->
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fa fa-plus"></i>
+										</div>
+									</div>
+									<input type="text" id="name" required name="name"
+										placeholder="Enter Name Here" th:value="${user.name}" class="form-control">
+								</div>
+								<!--Email-->
+								<div class="input-group mt-4">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<i class="fas fa-envelope"></i>
+										</div>
+									</div>
+									<input type="email" id="email" th:value="${user.email}" required name="email"
+										placeholder="Enter Email Here" class="form-control">
+								</div>
+							
+								
+								<!--image-->
+								
+								<div class="input-group mt-4">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<img class="singleprofile " th:src="@{'/image/'+${user.imageUrl}}" alt="profile picture" />
+										</div>
+									</div>
+									<input type="file" id="imageUrl"  name="imageUrl" class="form-control">
+								</div>
+								<!--about-->
+
+								<div class="input-group mt-4">
+									<div class="input-group-prepend">
+
+									</div>
+									<textarea id="about" rows="4" name="about" th:text="${user.about}"
+										placeholder="Enter About Yourself" class="form-control"></textarea>
+								</div>
+								<div class="conatiner mt-4">
+									<button type="submit" class="btn btn-outline-danger">Update User</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.tiny.cloud/1/inon0vp6e1e0zyagz9seotww9w3ior9uzfaducgh0sxh6jau/tinymce/6/tinymce.min.js"
+			referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+				selector: 'textarea#default-editor'
+			});
+		</script>
+</section>
+</body>
+</html>

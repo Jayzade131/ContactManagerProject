@@ -90,3 +90,18 @@ body{
   color: rgb(0, 0, 0);
   font-size: 30px;
 }
+/*table profile pic css*/
+.profile_pic{
+	width: 35px;
+	height: 35px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+  /*single profile css*/
+  .singleprofile{
+	  
+	  width: 200px;
+	  height: 200px;
+	  object-fit: cover;
+	border-radius: 50%;
+  }
