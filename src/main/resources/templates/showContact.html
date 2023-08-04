@@ -17,6 +17,17 @@
 					</div>
 					<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
 				</div>
+			<!--search bar-->
+			<div class="search-container my-4">
+				
+				<input id="search-input" onkeyup="search()" type="text" class="form-control" placeholder="search your contact" />
+				
+				<div class="search-result">
+					<h1>this is search result</h1>
+				</div>
+				
+			</div>
+				
 				<table class="table table-striped">
 					<thead>
 						<tr>
