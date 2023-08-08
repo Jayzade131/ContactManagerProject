@@ -12,6 +12,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,6 +40,8 @@ public class UserController {
 
 	@Autowired
 	private ContactRepo cr;
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	/* method for adding common data to response */
 	@ModelAttribute
@@ -255,6 +258,35 @@ public class UserController {
 		User user1 = findById.get();
 		this.u.delete(user1);
 		return "deletePage";
+		
+	}
+	/* setting handler */
+	
+	@GetMapping("/setting")
+	public String setting(Model m)
+	{
+		m.addAttribute("title", "Settings - Smart Contact Manager");
+		return "setting";
+	}
+	/* change password handler */
+	
+	@PostMapping("/change-Password")
+	public String changePassword(@RequestParam("oldPassword") String oldPassword,@RequestParam("newPassword")String newPassword,Principal principal,HttpSession session)
+	{
+		System.out.println("old ="+oldPassword);
+		System.out.println("new ="+newPassword);
+		User user = this.u.getUserByUserName(principal.getName());
+		System.out.println("current password ="+user.getPassword());
+		if(this.bCryptPasswordEncoder.matches( oldPassword,user.getPassword()))
+		{
+			user.setPassword(this.bCryptPasswordEncoder.encode(newPassword));
+			this.u.save(user);
+			session.setAttribute("message",new com.main.helper.Message("Your Password Is Changed...", "success"));
+		}
+		else {
+			session.setAttribute("message",new com.main.helper.Message("Your Old Password Is Wrong", "danger"));
+		}
+		return "setting";
 		
 	}
 }

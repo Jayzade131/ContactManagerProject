@@ -13,6 +13,7 @@
 				<div class="container text-center">
 					<img class="singleprofile " th:src="@{'/image/'+${user.imageUrl}}" alt="profile picture" />
 					<h3 class="mt-3"><span th:text="${user.name}" }></span> </h3>
+					<div class="table-responsive">
 					<table class="table">
 						<tbody>
 							<tr>
@@ -33,6 +34,7 @@
 							</tr>
 						</tbody>
 					</table>
+					</div>
 					<div class="descirption">
 
 						<th:block th:text="${user.about}"></th:block>
@@ -47,6 +49,13 @@
 			</div>
 
 		</div>
+		<script>
+            $(document).ready(() => {
+                $(".item").removeClass("active");
+                $("#profile-link").addClass("active");
+
+            });
+        </script>
 	</section>
 </body>
 

@@ -133,3 +133,10 @@ body {
 	border: 1px solid gray;
 	display: none;
 }
+ 
+/*show active link in menu bar css*/
+.active{
+	background: rgb(255, 89, 89) !important;
+	color: white !important;
+	
+}
