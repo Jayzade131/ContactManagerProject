@@ -44,14 +44,14 @@
 				<li class="nav-item">
 					<a class="nav-link" th:href="@{/logout}">Logout</a>
 				</li>
-
+					
 			</ul>
 
 			</form>
 		</div>
 	</nav>
 	<!--start of dashboard-->
-	<div class=" sidebar mt-3">
+	<div class=" sidebar mt-3 ">
 		<span onclick="toggleSidebar()" class="crossbtn">&times;</span>
 		<a href="#" id="home-link" th:href="@{/user/input}" class="item"><i class="fas fa-home"></i> Home</a>
 		<a href="#" id="view-link" th:href="@{/user/show-Contact/0}" class="item"><i class="fas fa-address-card"></i> View Contact</a>
@@ -84,8 +84,9 @@
 		crossorigin="anonymous"></script>
 		<script th:src="@{/js/script.js}"></script>
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	
+		
 	<script>
+		
 		function dc(cid){
 			
 		swal({

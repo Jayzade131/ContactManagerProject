@@ -42,6 +42,7 @@ public class MyConfig extends WebSecurityConfiguration{
         .defaultSuccessUrl("/user/input")
         .and().csrf().disable(); 
 
+        
  
         return http.build();
     }
